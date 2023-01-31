@@ -1,0 +1,137 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    
+}
+
+nav{
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+nav .logo-and-brand{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+}
+
+nav .logo-and-brand p{
+    justify-self: center;
+    font-size: x-large;
+    font-weight:bolder;
+    margin-left: 20px;
+}
+
+nav .logo-nav{
+    width: 60px;
+    height: 60px;
+}
+
+nav .shopping-cart{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+.jumbotron {
+    background-image: url(./images/ahmed-syed-6NVrH0HB_DE-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin: 0; 
+    width: 100%;
+    height: 1200px;
+    color:blue;
+}
+
+h1{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+.jumbotron .container p{
+    margin: 20px;
+}
+h2{
+    margin: 0%;
+    background-color:aquamarine;
+    text-align: center;
+    height: 70px;
+    font-weight: bold;
+    color:blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-container div{
+    display: grid;
+}
+
+.grid-container div img{
+    width: 300px;
+    height: 300px;
+    border-width: 5px;
+    border-style: double;
+    border-color:darkcyan;
+    margin: 20px;
+    transition: 1000ms;
+}
+
+.grid-container div img:hover{
+    transform: scale(1.05);
+}
+
+div p{
+    text-align: center;
+    margin: 0;
+}
+
+.btn{
+    justify-self: center;
+    margin: 10px;
+    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: darkcyan;
+    width: 100px;
+    height: 40px;
+}
+
+.btn:hover{
+    background-color: blue;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: darkcyan;
+    height: 50px;
+    justify-content: center;
+    color: whitesmoke;
+    align-items: center;
+}
+
+footer img{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+}
