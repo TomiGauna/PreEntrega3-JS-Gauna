@@ -72,19 +72,16 @@ h2{
     justify-content: center;
 }
 
-.grid-container{
+#products-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
+    text-align: center;
 }
 
-.grid-container div{
-    display: grid;
-}
-
-.grid-container div img{
+.prod-img{
     width: 300px;
     height: 300px;
     border-width: 5px;
@@ -94,16 +91,11 @@ h2{
     transition: 1000ms;
 }
 
-.grid-container div img:hover{
+.prod-img:hover{
     transform: scale(1.05);
 }
 
-div p{
-    text-align: center;
-    margin: 0;
-}
-
-.btn{
+.prod-btn{
     justify-self: center;
     margin: 10px;
     font-family: 'Inter Tight', sans-serif;
@@ -116,8 +108,82 @@ div p{
     height: 40px;
 }
 
-.btn:hover{
+.prod-btn:hover{
     background-color: blue;
+}
+
+.cart-container{
+    width: 80%;
+    margin: 0 10%;
+    max-height: 80vh;
+    color: aliceblue;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    z-index: 9;
+    top: 12vh;
+    scrollbar-color: none;
+}
+
+.cart-container::-webkit-scrollbar{
+    display: none;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-around;
+    background-color: cyan;
+    color: black;
+    width: 100%;
+
+}
+
+.header-title{
+    justify-self: flex-start;
+}
+
+.close-btn{
+    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: darkcyan;
+    width: 100px;
+    height: 40px;
+    align-self: center;
+    cursor:pointer
+}
+
+.cart-container .cart-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 10px;
+}
+
+.cart-container .cart-footer {
+    color: black;
+    padding: 10px;
+    text-align:start;
+    padding-top: 10px;
+    background-color: aqua;
+}
+
+.cart-container .cart-footer .clear-btn{
+    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: darkcyan;
+    width: 100px;
+    height: 40px;
+    cursor:pointer
 }
 
 footer{

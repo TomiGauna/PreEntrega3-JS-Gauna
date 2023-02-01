@@ -1,22 +1,24 @@
 class Cap{
-    constructor(colour, price){
+    constructor(name, colour, price, quantity){
+        this.name = name;
         this.colour = colour;
         this.price = price;
+        this.quantity = quantity;
     }
 }
 
-    let product1 = new Cap("green", 5200);
-    let product2 = new Cap("red", 4800);
-    let product3 = new Cap("black", 6100);
-    let product4 = new Cap("white", 5900);
-    let product5 = new Cap("blue", 5500);
-    let product6 = new Cap("yellow", 5000);
-    let product7 = new Cap("violet", 5700);
-    let product8 = new Cap("grey", 6000);
-    let product9 = new Cap("brown", 5400);
+    let greenCap = new Cap('Green Cap', "green", 5200, 1);
+    let redCap = new Cap('Red Cap', "red", 4800, 1);
+    let blackCap = new Cap('Black Cap', "black", 6100, 1);
+    let whiteCap = new Cap('White Cap', "white", 5900, 1);
+    let blueCap = new Cap('Blue Cap', "blue", 5500, 1);
+    let yellowCap = new Cap('Yellow Cap', "yellow", 5000, 1);
+    let violetCap = new Cap('Violet Cap', "violet", 5700, 1);
+    let greyCap = new Cap('Grey Cap', "grey", 6000, 1);
+    let brownCap = new Cap('Brown Cap' ,"brown", 5400, 1);
 
     const caps = [
-        product1,product2,product3,product4,product5,product6,product7,product8,product9
+        greenCap, redCap, blackCap, whiteCap, blueCap, yellowCap, violetCap, greyCap, brownCap
     ];
 
 
