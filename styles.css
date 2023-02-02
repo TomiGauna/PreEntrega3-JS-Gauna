@@ -13,6 +13,7 @@ nav{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 nav .logo-and-brand{
     display:flex;
@@ -37,6 +38,8 @@ nav .shopping-cart{
     width: 60px;
     height: 60px;
     margin-right: 20px;
+    justify-self: center;
+    cursor:pointer;
 }
 .jumbotron {
     background-image: url(./images/ahmed-syed-6NVrH0HB_DE-unsplash.jpg);
@@ -106,6 +109,7 @@ h2{
     background-color: darkcyan;
     width: 100px;
     height: 40px;
+    cursor:pointer;
 }
 
 .prod-btn:hover{
@@ -125,10 +129,7 @@ h2{
     z-index: 9;
     top: 12vh;
     scrollbar-color: none;
-}
-
-.cart-container::-webkit-scrollbar{
-    display: none;
+    border-radius: 10px;
 }
 
 .cart-header{
@@ -137,7 +138,6 @@ h2{
     background-color: cyan;
     color: black;
     width: 100%;
-
 }
 
 .header-title{
@@ -164,14 +164,21 @@ h2{
     align-items: center;
     width: 70%;
     margin: 10px;
+    border-style:ridge;
+    border-color: black;
+    border-width: 2px;
 }
 
 .cart-container .cart-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     color: black;
-    padding: 10px;
+    padding: 5px;
     text-align:start;
-    padding-top: 10px;
+    padding-top: 5px;
     background-color: aqua;
+    width: 100%;
 }
 
 .cart-container .cart-footer .clear-btn{
@@ -183,7 +190,7 @@ h2{
     background-color: darkcyan;
     width: 100px;
     height: 40px;
-    cursor:pointer
+    cursor:pointer;
 }
 
 footer{

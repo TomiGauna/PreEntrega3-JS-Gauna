@@ -22,7 +22,7 @@ class Cap{
     ];
 
 
-    let shoppingCart = [];
+    let shoppingCart = JSON.parse(localStorage.getItem("Shopping Cart")) || [];
 
 
 /*const caps2 = [
