@@ -19,6 +19,18 @@ caps.forEach((cap) => {
     let button = document.getElementById(`btn${cap.colour}`);
     button.addEventListener('click', () => {
         addingToShoppingCart(cap.colour);
+        Toastify({
+            text: "You've just added a product!",
+            position: "right",
+            duration: 3000,
+            gravity: "top",
+            offset: {
+                y: "70",
+            },
+            style: {
+            background: "linear-gradient(to right, darkcyan, black)",
+            }
+        }).showToast();
     })
 
 })
@@ -35,13 +47,13 @@ caps.forEach((cap) => {
     /* capInCart ? capInCart.quantity++ : shoppingCart.push(cap); */
 
     /*updateShoppingCart();*/
-    keepStorage();
+    /* keepStorage(); */
 }
 
 const quantityCounter = () => {
     quantityVisualizer.style.display = "block";
     let cartLength = shoppingCart.length;
-    localStorage.setItem("Cart Length", JSON.stringify(cartLength));
+    /* localStorage.setItem("Cart Length", JSON.stringify(cartLength)); */
     quantityVisualizer.innerText = JSON.parse(localStorage.getItem(cartLength));
 }
 
@@ -71,7 +83,10 @@ const updateShoppingCart = () => {
 
 
     shoppingCart.forEach((cap) =>{
-        let cartMain = document.createElement("div");
+        
+        
+        
+        /* let cartMain = document.createElement("div");
         cartMain.className = "cart-main";
         cartMain.innerHTML = `
             <h3>${cap.name}</h3>
@@ -86,7 +101,20 @@ const updateShoppingCart = () => {
         removebutton.innerText = "Remove";
         cartMain.append(removebutton);
 
-        removebutton.addEventListener("click", removeItem);
+        removebutton.addEventListener("click", removeItem); */
+
+        Swal.fire({
+            position: 'center',
+            titleText: 'Your shopping cart contains:',
+            text:` 
+            ${cap.name}
+            Price: ${cap.price}
+            Items: ${cap.quantity}
+            Total: ${cap.price * cap.quantity}
+                `,
+            /* footer: `Amount to pay: ${totalAmount}` */
+              })
+
 
     })
 
@@ -108,10 +136,11 @@ totalToPay.append(clearButton);
 
 cartWindow.append(totalToPay);
 
-
 }
 
 cartIcon.addEventListener('click', updateShoppingCart);
+
+
 
 const removeItem = (colour) => {
     const product = caps.find((cap) => cap.colour === colour);
@@ -119,7 +148,7 @@ const removeItem = (colour) => {
     updateShoppingCart();
 }
 
-const keepStorage = () => {
+/* const keepStorage = () => {
     localStorage.setItem('Shopping Cart',JSON.stringify(shoppingCart));
-}
+} */
 

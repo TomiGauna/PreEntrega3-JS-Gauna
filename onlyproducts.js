@@ -25,6 +25,7 @@ class Cap{
     let shoppingCart = JSON.parse(localStorage.getItem("Shopping Cart")) || [];
 
 
+
 /*const caps2 = [
     {colour: "green", price: 5200},
     {colour: "red", price: 4800},

@@ -41,6 +41,20 @@ nav .shopping-cart{
     justify-self: center;
     cursor:pointer;
 }
+
+#quantity-visualizer{
+    background-color: aquamarine;
+    color: black;
+    border-radius: 30%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px;
+    right: 14px;
+    top: 37px;
+    position: absolute;
+    display: none;
+}
+
 .jumbotron {
     background-image: url(./images/ahmed-syed-6NVrH0HB_DE-unsplash.jpg);
     background-size: cover;
