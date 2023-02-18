@@ -98,7 +98,7 @@ const updateShoppingCart = () => {
         removeButton.className = "remove-btn"
         cartContent.append(removeButton);
 
-        removeButton.addEventListener('click', removeItem);
+        removeButton.addEventListener('click', removeItem(cap.colour));
      
     })
 
