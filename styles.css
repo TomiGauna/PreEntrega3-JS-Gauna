@@ -130,7 +130,49 @@ h2{
     background-color: blue;
 }
 
-.cart-container{
+.cart-items{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.remove-btn{
+    color: black;
+    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size:medium;
+    background-color:aquamarine;
+    height: 35px;
+    width: 80px;
+    border-radius: 5px;
+    border-style: none;
+    cursor:pointer;
+}
+
+.remove-btn:hover{
+    color:blue ;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: darkcyan;
+    height: 50px;
+    justify-content: center;
+    color: whitesmoke;
+    align-items: center;
+}
+
+footer img{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+}
+
+
+/* .cart-container{
     width: 80%;
     margin: 0 10%;
     max-height: 80vh;
@@ -205,20 +247,4 @@ h2{
     width: 100px;
     height: 40px;
     cursor:pointer;
-}
-
-footer{
-    display: flex;
-    flex-direction: row;
-    background-color: darkcyan;
-    height: 50px;
-    justify-content: center;
-    color: whitesmoke;
-    align-items: center;
-}
-
-footer img{
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
-}
+}*/

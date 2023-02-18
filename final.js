@@ -1,6 +1,6 @@
 const productsContainer = document.getElementById("products-container");
 const cartIcon = document.getElementById('shopping-cart');
-const cartWindow = document.getElementById('cartview');
+/* const cartView = document.getElementById('cartview'); */
 const quantityVisualizer = document.getElementById('quantity-visualizer');
 
 caps.forEach((cap) => {
@@ -22,7 +22,7 @@ caps.forEach((cap) => {
         Toastify({
             text: "You've just added a product!",
             position: "right",
-            duration: 3000,
+            duration: 2500,
             gravity: "top",
             offset: {
                 y: "70",
@@ -61,86 +61,45 @@ quantityCounter();
 
 const updateShoppingCart = () => {
 
-    cartWindow.innerHTML = "";
-    cartWindow.style.display = "flex";
-
-    let cartHeader = document.createElement("div");
-    cartHeader.className = 'cart-header';
-    cartHeader.innerHTML = `
-        <h4 class="header-title">Your shopping cart contains:</h4>
-    `;
-    cartWindow.append(cartHeader);
-
-    let closeButton = document.createElement('button');
-    closeButton.className = "close-btn";
-    closeButton.innerText = "Close";
-    
-    closeButton.addEventListener('click', () => {
-        cartWindow.style.display = "none";
-    })
-
-    cartHeader.append(closeButton);
-
+    let cartContent = document.createElement('div');
+    cartContent.innerHTML = "";
 
     shoppingCart.forEach((cap) =>{
         
-        
-        
-        /* let cartMain = document.createElement("div");
-        cartMain.className = "cart-main";
-        cartMain.innerHTML = `
-            <h3>${cap.name}</h3>
-            <p>${cap.price}</p>
-            <p>Items: ${cap.quantity}</p>
+        let eachCapInCart = document.createElement('div');
+        eachCapInCart.className = "cart-items";
+        eachCapInCart.innerHTML = `
+            <h3>${cap.name}</h3> 
+            <p>${cap.price}</p> 
+            <p>Items: ${cap.quantity}</p> 
             <p>Total: ${cap.price * cap.quantity}</p>
         `;
-        cartWindow.append(cartMain);
 
-        let removebutton = document.createElement("button");
-        removebutton.className = "remove-btn";
-        removebutton.innerText = "Remove";
-        cartMain.append(removebutton);
+        cartContent.appendChild(eachCapInCart);
 
-        removebutton.addEventListener("click", removeItem); */
+        let removeButton = document.createElement('button');
+        removeButton.innerText = "Remove";
+        removeButton.className = "remove-btn"
+        cartContent.append(removeButton);
 
-        Swal.fire({
-            position: 'center',
-            titleText: 'Your shopping cart contains:',
-            text:` 
-            ${cap.name}
-            Price: ${cap.price}
-            Items: ${cap.quantity}
-            Total: ${cap.price * cap.quantity}
-                `,
-            /* footer: `Amount to pay: ${totalAmount}` */
-              })
-
-
+        removeButton.addEventListener('click', removeItem);
+     
     })
 
     const totalAmount = shoppingCart.reduce((acc, el) => acc + el.price * el.quantity, 0);
 
-    let totalToPay = document.createElement("div");
-    totalToPay.className = "cart-footer";
-    totalToPay.innerHTML = `<p>Total to pay: $${totalAmount}</p>` ;
-
-    let clearButton = document.createElement("button");
-    clearButton.innerText = "Clear Cart";
-    clearButton.className = "clear-btn";
-    clearButton.addEventListener('click', () => {
-        shoppingCart.splice(0, shoppingCart.length);
-        updateShoppingCart();
-    })
-
-totalToPay.append(clearButton);
-
-cartWindow.append(totalToPay);
+        Swal.fire({
+            position: 'center',
+            titleText: 'Your shopping cart contains:',
+            html: cartContent,
+            footer: `Total to pay: ${totalAmount}`, 
+            background: 'beige',
+            width: '1000px',
+              })
 
 }
 
 cartIcon.addEventListener('click', updateShoppingCart);
-
-
 
 const removeItem = (colour) => {
     const product = caps.find((cap) => cap.colour === colour);

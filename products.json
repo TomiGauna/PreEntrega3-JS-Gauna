@@ -1,0 +1,82 @@
+[
+
+{
+    "name": "Green Cap",
+    "colour": "green", 
+    "price": 5200, 
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Red Cap",
+    "colour": "red",
+    "price": 4800, 
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Black Cap",
+    "colour": "black", 
+    "price": 6100,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "White Cap",
+    "colour": "white", 
+    "price": 5900,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Blue Cap",
+    "colour": "blue",
+    "price": 5500,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Yellow Cap",
+    "colour": "yellow",
+    "price": 5000,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Violet Cap",
+    "colour": "violet",
+    "price": 5700,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Grey Cap",
+    "colour": "grey",
+    "price": 6000,
+    "quantity": 1
+},
+
+
+
+{
+    "name": "Brown Cap",
+    "colour": "brown",
+    "price": 5400,
+    "quantity": 1
+}
+
+]
