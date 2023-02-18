@@ -3,7 +3,6 @@ const caps = [];
 
 const productsContainer = document.getElementById("products-container");
 const cartIcon = document.getElementById('shopping-cart');
-/* const cartView = document.getElementById('cartview'); */
 const quantityVisualizer = document.getElementById('quantity-visualizer');
 
 fetch(improvisedDatabase)
@@ -98,7 +97,8 @@ const updateShoppingCart = () => {
         removeButton.className = "remove-btn"
         cartContent.append(removeButton);
 
-        removeButton.addEventListener('click', removeItem(cap.colour));
+        removeButton.addEventListener('click', () => removeItem(cap.colour));
+        /* removeButton.addEventListener('click',removeItem); */
      
     })
 
@@ -119,7 +119,7 @@ cartIcon.addEventListener('click', updateShoppingCart);
 
 const removeItem = (colour) => {
     const product = caps.find((cap) => cap.colour === colour);
-    shoppingCart.splice(shoppingCart.indexOf(product), 1);
+    shoppingCart.splice(shoppingCart.indexOf(product, 1))
     updateShoppingCart();
 }
 
