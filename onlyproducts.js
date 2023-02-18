@@ -1,15 +1,17 @@
-const fakeDatabase = "./products.json";
+const improvisedDatabase = "http://localhost:5500/productsavailable.json";
+const caps = [];
 
-fetch(fakeDatabase)
+fetch(improvisedDatabase)
 .then(Response => Response.json())
 .then(productsdata => {
-    console.log(productsdata);
-})
+    console.log(caps);
+    productsdata.forEach(cap => {
+        caps.push(cap)
+    });;
+});
 
 
-const caps = [productsdata];
-
-class Cap{
+/* class Cap{
     constructor(name, colour, price, quantity){
         this.name = name;
         this.colour = colour;
@@ -28,7 +30,7 @@ class Cap{
     let greyCap = new Cap('Grey Cap', "grey", 6000, 1);
     let brownCap = new Cap('Brown Cap' ,"brown", 5400, 1);
 
-  /*   const caps = [
+    const capss = [
         greenCap, redCap, blackCap, whiteCap, blueCap, yellowCap, violetCap, greyCap, brownCap
     ]; */
 
