@@ -29,14 +29,14 @@ fetch(improvisedDatabase)
     
         let button = document.getElementById(`btn${cap.colour}`);
         button.addEventListener('click', () => {
-            
+
             Swal.fire({
                 title: 'Are you sure you want to buy this product?',
                 showDenyButton: true,
                 confirmButtonText: 'Yes, I do',
                 denyButtonText: `No, I'm not`,
+                background:'beige',
               }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     addingToShoppingCart(cap.colour);
                     Toastify({
