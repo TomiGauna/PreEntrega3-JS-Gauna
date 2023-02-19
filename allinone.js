@@ -1,5 +1,6 @@
 const improvisedDatabase = "./productsavailable.json";
 const caps = [];
+let shoppingCart = JSON.parse(localStorage.getItem("Shopping Cart")) || [];
 
 const productsContainer = document.getElementById("products-container");
 const cartIcon = document.getElementById('shopping-cart');
@@ -28,47 +29,60 @@ fetch(improvisedDatabase)
     
         let button = document.getElementById(`btn${cap.colour}`);
         button.addEventListener('click', () => {
-            addingToShoppingCart(cap.colour);
-            Toastify({
-                text: "You've just added a product!",
-                position: "right",
-                duration: 2500,
-                gravity: "top",
-                offset: {
-                    y: "70",
-                },
-                style: {
-                background: "linear-gradient(to right, darkcyan, black)",
+            
+            Swal.fire({
+                title: 'Are you sure you want to buy this product?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes, I do',
+                denyButtonText: `No, I'm not`,
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    addingToShoppingCart(cap.colour);
+                    Toastify({
+                        text: "You've just added a product!",
+                        position: "right",
+                        duration: 2500,
+                        gravity: "top",
+                        offset: {
+                            y: "70",
+                        },
+                        style: {
+                        background: "linear-gradient(to right, darkcyan, black)",
+                        }
+                    }).showToast();
+                } else if (result.isDenied) {
+                  Swal.fire('You did not added any product', '', 'info')
                 }
-            }).showToast();
+              })
+            
+            
         })
     
     })
     
 });
 
-let shoppingCart = JSON.parse(localStorage.getItem("Shopping Cart")) || [];
 
 const addingToShoppingCart = (colour) => {
     const cap = caps.find((cap) => cap.colour === colour);
     const capInCart = shoppingCart.find((cap) => cap.colour === colour);
-    /* if (capInCart) {
-        capInCart.quantity++;
-    } else {
-        shoppingCart.push(cap); 
-    } */
     
     capInCart ? capInCart.quantity++ : shoppingCart.push(cap);
 
+    quantityCounter();
+
+    keepStorage();
     /*updateShoppingCart();*/
-    /* keepStorage(); */
+    
 }
 
 const quantityCounter = () => {
     quantityVisualizer.style.display = "block";
+    /* quantityVisualizer.innerText = shoppingCart.length; */
     let cartLength = shoppingCart.length;
-    /* localStorage.setItem("Cart Length", JSON.stringify(cartLength)); */
-    quantityVisualizer.innerText = JSON.parse(localStorage.getItem(cartLength));
+    localStorage.setItem("Cart Length", JSON.stringify(cartLength));
+    quantityVisualizer.innerText = JSON.parse(localStorage.getItem("Cart Length"));
 }
 
 quantityCounter();
@@ -86,19 +100,35 @@ const updateShoppingCart = () => {
         eachCapInCart.innerHTML = `
             <h3>${cap.name}</h3> 
             <p>${cap.price}</p> 
-            <p>Items: ${cap.quantity}</p> 
+            <button class="subtraction-sign">-</button>
+            <p>Items: ${cap.quantity}</p>
+            <button class="adition-sign">+</button> 
             <p>Total: ${cap.price * cap.quantity}</p>
         `;
 
         cartContent.appendChild(eachCapInCart);
+
+        let subtractionSign = eachCapInCart.querySelector('.subtraction-sign')
+        subtractionSign.addEventListener('click', () => {
+            if (cap.quantity !== 1) {
+                cap.quantity--
+            }
+            updateShoppingCart();
+        })
+
+        let aditionSign = eachCapInCart.querySelector('.adition-sign')
+        aditionSign.addEventListener('click', () => {
+            cap.quantity++
+            updateShoppingCart();
+        })
+        
 
         let removeButton = document.createElement('button');
         removeButton.innerText = "Remove";
         removeButton.className = "remove-btn"
         cartContent.append(removeButton);
 
-        removeButton.addEventListener('click', () => removeItem(cap.colour));
-        /* removeButton.addEventListener('click',removeItem); */
+        removeButton.addEventListener('click', () => removeItem(cap.colour))
      
     })
 
@@ -119,37 +149,15 @@ cartIcon.addEventListener('click', updateShoppingCart);
 
 const removeItem = (colour) => {
     const product = caps.find((cap) => cap.colour === colour);
-    shoppingCart.splice(shoppingCart.indexOf(product, 1))
+    shoppingCart.splice(shoppingCart.indexOf(product), 1)
+    quantityCounter();
+    keepStorage();
     updateShoppingCart();
 }
 
-/* const keepStorage = () => {
+
+const keepStorage = () => {
     localStorage.setItem('Shopping Cart',JSON.stringify(shoppingCart));
-} */
-
-
-/* class Cap{
-    constructor(name, colour, price, quantity){
-        this.name = name;
-        this.colour = colour;
-        this.price = price;
-        this.quantity = quantity;
-    }
 }
 
-    let greenCap = new Cap('Green Cap', "green", 5200, 1);
-    let redCap = new Cap('Red Cap', "red", 4800, 1);
-    let blackCap = new Cap('Black Cap', "black", 6100, 1);
-    let whiteCap = new Cap('White Cap', "white", 5900, 1);
-    let blueCap = new Cap('Blue Cap', "blue", 5500, 1);
-    let yellowCap = new Cap('Yellow Cap', "yellow", 5000, 1);
-    let violetCap = new Cap('Violet Cap', "violet", 5700, 1);
-    let greyCap = new Cap('Grey Cap', "grey", 6000, 1);
-    let brownCap = new Cap('Brown Cap' ,"brown", 5400, 1);
 
-    const capss = [
-        greenCap, redCap, blackCap, whiteCap, blueCap, yellowCap, violetCap, greyCap, brownCap
-    ]; */
-
-
-   
